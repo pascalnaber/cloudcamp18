@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gamingwebapp-ingress
+  namespace: ingresshttproutingdemo
+  annotations:        
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: gaming.116e9d7a75b74a46afd1.eastus.aksapp.io
+    http:
+      paths:
+      - backend:
+          serviceName: gamingwebapp-service
+          servicePort: 80  
+  - host: gaming.cloudcamp.cf
+    http:
+      paths:
+      - backend:
+          serviceName: gamingwebapp-service
+          servicePort: 80
+  - host: gaming.trafficmanager.net
+    http:
+      paths:
+      - backend:
+          serviceName: gamingwebapp-service
+          servicePort: 80
